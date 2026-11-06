@@ -1,0 +1,19 @@
+meta {
+  name: Nutzer registrieren
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:1337/api/auth/local/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "anna",
+    "email": "anna@example.com",
+    "password": "Passwort123"
+  }
+}

@@ -1,0 +1,18 @@
+meta {
+  name: Nutzer anmelden
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:1337/api/auth/local
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identifier": "anna@example.com",
+    "password": "Passwort123"
+  }
+}

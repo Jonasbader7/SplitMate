@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.tmp/
+.cache/
+.strapi/
+dist/
+build/
+*.db
+*.sqlite*
+backend/public/uploads/*
+.DS_Store
+.strapi-updater.json

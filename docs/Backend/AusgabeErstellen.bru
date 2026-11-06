@@ -1,0 +1,20 @@
+meta {
+  name: Ausgabe erstellen
+  type: http
+  seq: 5
+}
+post {
+  url: http://localhost:1337/api/expenses
+  body: json
+  auth: none
+}
+body:json {
+  {
+    "data": {
+      "beschreibung": "Migros Einkauf",
+      "betrag": 45.50,
+      "bezahltVon": "Anna",
+      "bezahltFuer": "Alle"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+stages:
+  - lint
+  - build
+  - deploy
+
+variables:
+  PANDOC_VERSION: "3.1"
+
+lint-markdown:
+  stage: lint
+  image: davidanson/markdownlint-cli2:latest
+  script:
+    - markdownlint-cli2 "docs/**/*.md" "README.md"
+  allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /blog/i || $CI_COMMIT_MESSAGE =~ /readme/i'
+
+build-pages:
+  stage: build
+  image: pandoc/latex:latest
+  script:
+    - mkdir -p public/docs
+    - pandoc README.md -o public/index.html
+    - pandoc docs/Deliverable3-Blog.md -o public/docs/iteration3.html
+    - cp -r docs/images public/docs/images 2>/dev/null || true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /blog/i || $CI_COMMIT_MESSAGE =~ /readme/i'
+
+pages:
+  stage: deploy
+  script:
+    - echo "Deploying to GitLab Pages"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_MESSAGE =~ /blog/i || $CI_COMMIT_MESSAGE =~ /readme/i'

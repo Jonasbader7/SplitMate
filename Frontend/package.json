@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^6.0.7",
+    "vite": "latest",
+    "vue": "latest",
+    "vue-router": "latest"
+  }
+}
